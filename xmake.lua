@@ -5,14 +5,12 @@ local prj_dir = os.curdir()
 local build_dir = path.join(prj_dir, "build")
 local zhujiang_dir = path.join(prj_dir, "Zhujiang-NG")
 local rtl_dir = path.join(prj_dir, "Zhujiang-NG", "build", "rtl")
+local dj_top_dir = path.join(prj_dir, "build", "DongJiangTop")
 local lua_dir = path.join(prj_dir, "src", "main", "lua")
 local tc_dir = path.join(lua_dir, "testcases")
 local cp_dir = path.join(lua_dir, "component")
 local env_dir = path.join(lua_dir, "env")
 
--- TODO:generate rtl
-
---
 local function TestDongJiangCommon()
     add_rules("verilua")
 
@@ -66,6 +64,19 @@ end
 
 target("TestDongJiang", function()
     TestDongJiangCommon()
+end)
+
+target("DongJiangTop", function()
+    set_kind("phony")
+    set_default(false)
+    on_build(function ()
+        os.tryrm(path.join(dj_top_dir, "*"))
+        os.tryrm(path.join(build_dir, "*"))
+        os.cd(zhujiang_dir)
+        os.exec("xmake rtl -P . -M Home")
+        os.mkdir(path.join(dj_top_dir, "rtl"))
+        os.mv(path.join(rtl_dir, "*v"), path.join(dj_top_dir, "rtl"))
+    end)
 end)
 
 target("init", function()
