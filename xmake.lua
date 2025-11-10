@@ -28,7 +28,7 @@ local function TestDongJiangCommon()
 
     -- set needed files
     add_files(
-        rtl_dir .. "/*.sv",
+        dj_top_dir .. "/rtl/*.sv",
         prj_dir .. "/*.lua",
         cp_dir .. "/*.lua",
         env_dir .. "/*.lua",

@@ -1,16 +1,18 @@
 local clock = dut.clock:chdl()
 local DJMonitor = require "DongJiangMonitor"
 -- signal bundle definition
-local dj = dut.u_DongJiangTop.dj
+local dj = dut.u_HomeWrapper.hnx
 
-local chi_txreq = dj:auto_bundle{ prefix = "txreq" }
-local chi_txrsp = dj:auto_bundle{ prefix = "txrsp" }
-local chi_txdat = dj:auto_bundle{ prefix = "txdat" }
-local chi_txsnp = dj:auto_bundle{ prefix = "txsnp" }
-local chi_rxreq = dj:auto_bundle{ prefix = "rxreq" }
-local chi_rxrsp = dj:auto_bundle{ prefix = "rxrsp" }
-local chi_rxdat = dj:auto_bundle{ prefix = "rxdat" }
-local chi_rxsnp = dj:auto_bundle{ prefix = "rxsnp" }
+local chi_txreq = dj:auto_bundle{ prefix = "io_chi_tx_req_" }
+local chi_txrsp = dj:auto_bundle{ prefix = "io_chi_tx_rsp_" }
+local chi_txdat = dj:auto_bundle{ prefix = "io_chi_tx_dat_" }
+local chi_txsnp = dj:auto_bundle{ prefix = "io_chi_tx_snp_" }
+
+local chi_rxreq = dj:auto_bundle{ prefix = "io_chi_rx_req_" }
+local chi_rxrsp = dj:auto_bundle{ prefix = "io_chi_rx_rsp_" }
+local chi_rxdat = dj:auto_bundle{ prefix = "io_chi_rx_dat_" }
+local chi_rxsnp = dj:auto_bundle{ prefix = "io_chi_rx_snp_" }
+
 
 -- Database definition
 local dj_chi_db

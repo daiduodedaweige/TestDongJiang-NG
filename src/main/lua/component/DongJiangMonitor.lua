@@ -1,3 +1,7 @@
+local class = require "pl.class"
+
+local DongJiangMonitor = class()
+
 function DongJiangMonitor:_init(name, txreq, txrsp, txdat, txsnp, rxreq, rxrsp, rxdat, rxsnp, db, verbose, enable)
     self.name = name
     self.verbose = verbose
